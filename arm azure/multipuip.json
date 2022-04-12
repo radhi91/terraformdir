@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"ipCount": {
+			"type": "int",
+			"defaultValue": 3
+		}
+	},
+	"resources": [{
+		"type": "Microsoft.Network/publicIPAddresses",
+		"apiVersion": "2020-08-01",
+		"name": "[concat('puip', copyIndex())]",
+		"location": "[resourceGroup().location]",
+		"sku": {
+			"name": "Standard"
+		},
+		"zones": [
+			"1",
+			"2",
+			"3"
+		],
+		"properties": {
+			"publicIPAllocationMethod": "Static",
+			"publicIPAddressVersion": "IPv4"
+		},
+		"copy": {
+			"name": "ipcopy",
+			"count": "[parameters('ipCount')]"
+		}
+	}]
+}
