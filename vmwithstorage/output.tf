@@ -11,3 +11,13 @@ output "PrivateIP" {
   description = "IPs of all VM's provisoned."
   value       = azurerm_network_interface.nic.private_ip_address
 }
+output "sname" {
+  value = module.storageacc.stname
+}
+
+output "bblob" {
+  value = module.storageacc.blob
+}
+output "queue" {
+  value = module.storageacc.Queue
+}

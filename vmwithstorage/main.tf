@@ -104,5 +104,5 @@ resource "azurerm_linux_virtual_machine" "lvm" {
   disable_password_authentication = false
 }
 module "storageacc"{
-    source                  = "C:/repos/vmwithstorage/storageacc"
+    source                  = "C:/repos/terraformdir/vmwithstorage/storageacc"
 }
